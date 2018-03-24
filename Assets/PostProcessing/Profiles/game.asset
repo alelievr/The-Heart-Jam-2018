@@ -65,6 +65,9 @@ MonoBehaviour:
   greytougoum:
     overrideState: 1
     value: 0
+  noircissement:
+    overrideState: 1
+    value: 0
 --- !u!114 &114629750304634182
 MonoBehaviour:
   m_ObjectHideFlags: 3

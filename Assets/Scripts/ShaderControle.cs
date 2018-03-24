@@ -8,9 +8,11 @@ public class ShaderControle : MonoBehaviour {
 	// Use this for initialization
 	public float		depth;
 	public float		oxygen;
-	public float		speedtmp = 1;
+	public float		speedoxygentmp = 1;
+	public float		speeddephttmp = 1;
 	PostProcessVolume	volume;
-	PreDeathEffect			predeatheffect;
+	PreDeathEffect		predeatheffect;
+	Vignette			vignette;
 	public float		distortionIntensity;
 
 	void OnEnable () {
@@ -20,7 +22,9 @@ public class ShaderControle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		oxygenchange();
-		oxygen += Time.deltaTime * speedtmp;
+		depthchange();
+		oxygen += Time.deltaTime * speedoxygentmp;
+		depth += Time.deltaTime * speeddephttmp;
 		// cheapDistorsion();
 	}
 
@@ -42,7 +46,20 @@ public class ShaderControle : MonoBehaviour {
 		predeatheffect.Strenght.Override((oxygen > 50) ? (oxygen - 50) / 110 : 0);
 		predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
 		predeatheffect.greystrenght.Override((oxygen > 60) ? (oxygen - 60) / 40 : 0);
+
     }
+
+	void depthchange()
+	{
+		bool foundEffectSettings = volume.profile.TryGetSettings<PreDeathEffect>(out predeatheffect);
+		if(!foundEffectSettings)
+		{
+			enabled = false;
+			Debug.Log("Cant load PreDeathEffect settings");
+			return;
+		}
+		predeatheffect.noircissement.Override(depth / 150);
+	}
 
 	void cheapDistorsion()
 	{

@@ -28,6 +28,8 @@ public sealed class PreDeathEffect : PostProcessEffectSettings
     public FloatParameter greystrenght = new FloatParameter { value = 0f };
     [Tooltip("greyance.")]
     public FloatParameter greytougoum = new FloatParameter { value = 0f };
+    [Range(0f, 1f), Tooltip("noircissement.")]
+    public FloatParameter noircissement = new FloatParameter { value = 0f };
 }
  
 public sealed class PreDeathEffectRenderer : PostProcessEffectRenderer<PreDeathEffect>
@@ -49,6 +51,7 @@ public sealed class PreDeathEffectRenderer : PostProcessEffectRenderer<PreDeathE
         sheet.properties.SetFloat("_vignette_size", settings.vignette_size);
         sheet.properties.SetFloat("_greystrenght", settings.greystrenght);
         sheet.properties.SetFloat("_greytougoum", settings.greytougoum);
+        sheet.properties.SetFloat("_noircissement", settings.noircissement);
         context.command.BlitFullscreenTriangle(context.source, context.destination, sheet, 0);
     }
 }

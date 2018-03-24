@@ -15,6 +15,7 @@
         float _vignette_size;
         float _greystrenght;
         float _greytougoum;
+        float _noircissement;
         
         float _tougoumgreydist;
 
@@ -63,12 +64,16 @@
             float luminance = dot(color.rgb, float3(0.2126729, 0.7151522, 0.0721750));
             float actualgrey = _greystrenght;
             // color.rgb = lerp(color.rgb, luminance.xxx, _greystrenght.xxx);
-            if (isintougoum)
+            if (isintougoum) // y parait q uavec le reste c est bizarre
             {
                 _tougoumgreydist = (tougoumprogression < 0.5) ? (0.5 - tougoumprogression) * 2 : (tougoumprogression - 0.5) * 2;
                 actualgrey = (distancetocenter > _tougoumgreydist) ? 1 : actualgrey;
             }
             color.rgb = luminance.xxx * actualgrey + color.rgb * (1 - actualgrey);
+
+            //noircisssement
+
+            color.rgb = color.rgb *  clamp(1 - _noircissement * (distancetocenter + 1), 0, 1);
 
             //veination
 
