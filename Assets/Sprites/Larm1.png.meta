@@ -1,10 +1,11 @@
 fileFormatVersion: 2
 guid: 0dfc7f3d8db044ac2a284977a312cc02
-timeCreated: 1521876126
+timeCreated: 1521925890
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
     21300000: Larm1_0
+    21300002: Larm1_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -84,14 +85,44 @@ TextureImporter:
       name: Larm1_0
       rect:
         serializedVersion: 2
-        x: 75
+        x: 80
         y: 57
-        width: 11
-        height: 12
+        width: 6
+        height: 5
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
+      outline:
+      - - {x: -3, y: 2.5}
+        - {x: -3, y: -2.5}
+        - {x: 3, y: -2.5}
+        - {x: 3, y: 2.5}
+      physicsShape:
+      - - {x: -4.9209747, y: 2.6248322}
+        - {x: 1.6624985, y: -6}
+        - {x: 5.5, y: -6}
+        - {x: 5.5, y: -1.680954}
+        - {x: -1.2223129, y: 5.917282}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Larm1_1
+      rect:
+        serializedVersion: 2
+        x: 75
+        y: 62
+        width: 10
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -4, y: 3.5}
+        - {x: -5, y: 2.5}
+        - {x: -5, y: -2.5}
+        - {x: -4, y: -3.5}
+        - {x: 5, y: -3.5}
+        - {x: 5, y: 0.5}
+        - {x: 3, y: 3.5}
       physicsShape: []
       tessellationDetail: 0
     outline: []
