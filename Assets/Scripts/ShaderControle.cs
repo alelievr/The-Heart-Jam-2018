@@ -58,7 +58,7 @@ public class ShaderControle : MonoBehaviour {
 			Debug.Log("Cant load PreDeathEffect settings");
 			return;
 		}
-		predeatheffect.noircissement.Override(depth / 150);
+		predeatheffect.noircissement.Override(depth / 120);
 	}
 
 	void cheapDistorsion()

@@ -302,7 +302,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   depth: 0
   oxygen: 0
-  speedtmp: 4
+  speedoxygentmp: 0
+  speeddephttmp: 3.51
   distortionIntensity: 0
 --- !u!1 &801642641
 GameObject:
