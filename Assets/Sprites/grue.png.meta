@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 72e70f8b461724ccfabc5d341f1b7966
-timeCreated: 1521853671
+guid: 4aa1dea2a277b40a08351959028ecdd2
+timeCreated: 1521878407
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: container_0
+    21300000: grue_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,45 +81,21 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: container_0
+      name: grue_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 27
-        width: 138
-        height: 85
+        x: 97
+        y: 76
+        width: 37
+        height: 78
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
-      physicsShape:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
-    outline:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
-    physicsShape:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

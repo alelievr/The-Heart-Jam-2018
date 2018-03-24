@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 72e70f8b461724ccfabc5d341f1b7966
-timeCreated: 1521853671
+guid: 1968e61796e524e1db2bf12b272d9563
+timeCreated: 1521863890
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName:
-    21300000: container_0
+  fileIDToRecycleName: {}
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -41,7 +40,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -79,47 +78,9 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: container_0
-      rect:
-        serializedVersion: 2
-        x: 14
-        y: 27
-        width: 138
-        height: 85
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
-      physicsShape:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
-      tessellationDetail: 0
-    outline:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
-    physicsShape:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
+    sprites: []
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 

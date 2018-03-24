@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 72e70f8b461724ccfabc5d341f1b7966
-timeCreated: 1521853671
+guid: fe2279da3c2d443a2a37a9f853e93e8f
+timeCreated: 1521875506
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: container_0
+    21300000: New Piskel (3)_0
+    21300002: New Piskel (3)_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,45 +82,35 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: container_0
+      name: New Piskel (3)_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 27
-        width: 138
-        height: 85
+        x: 37
+        y: 142
+        width: 33
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-      outline:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
-      physicsShape:
-      - - {x: -69, y: 42.5}
-        - {x: -69, y: -36.5}
-        - {x: -61, y: -42.5}
-        - {x: 69, y: -42.5}
-        - {x: 69, y: 38.5}
-        - {x: 60, y: 42.5}
+      outline: []
+      physicsShape: []
       tessellationDetail: 0
-    outline:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
-    physicsShape:
-    - - {x: -68, y: 54}
-      - {x: -68, y: -25}
-      - {x: -55, y: -35}
-      - {x: 74, y: -35}
-      - {x: 74, y: 52}
-      - {x: 71, y: 54}
+    - serializedVersion: 2
+      name: New Piskel (3)_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 22
+        width: 33
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
   spritePackingTag: 
   userData: 
   assetBundleName: 
