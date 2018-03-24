@@ -1,24 +1,41 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 [ExecuteInEditMode]
 public class WaterSurface : MonoBehaviour
 {
 	public float		airPercent = 50;
 	public float		checkSize = 10;
-	new BoxCollider2D	collider;
 	
 	[Space]
 	public int			perlinSamples = 20;
+	public int			additionalSamples = 4;
 	public float		scrollSpeed = .1f;
-	public float		noiseHeight = .3f;
+	public float		noiseHeightMultiplier = 1;
+	
+	[Space]
+	public MeshFilter	meshFilter;
+	new public BoxCollider2D	collider;
+
+	Mesh			waterMesh;
+
+	Quaternion		lastRotation;
+	float			smoothLastRotation;
+	float			rotationVelocity;
+
+	int				lastPointsUnderWaterCount;
 
 	float			waterHeight = 1;
+	float			noiseHeight = .3f;
+
+	Triangulator	triangulator;
 
 	Buoyancy[]		buoyancers;
 
 	LineRenderer	lineRenderer;
+	Vector3[]		positions;
 
 	RaycastHit2D[]	rightCollisions = new RaycastHit2D[2];
 	RaycastHit2D[]	leftCollisions = new RaycastHit2D[2];
@@ -26,19 +43,34 @@ public class WaterSurface : MonoBehaviour
 	private void Awake()
 	{
 		buoyancers = FindObjectsOfType< Buoyancy >();
+		lastRotation = transform.rotation;
 	}
 
 	void Start ()
 	{
 		collider = GetComponent< BoxCollider2D >();
 		lineRenderer = GetComponent< LineRenderer >();
+
+		waterMesh = new Mesh();
+		positions = new Vector3[perlinSamples + 2];
 	}
 	
 	void Update ()
 	{
+		UpdateNoiseHeight();
 		UpdateWaterHeight();
 		UpdateLineRenderer();
 		UpdateBuoyancers();
+	}
+
+	void UpdateNoiseHeight()
+	{
+	    float rotationDelta = Quaternion.Angle(transform.rotation, lastRotation);
+		
+		smoothLastRotation = Mathf.SmoothDamp(smoothLastRotation, rotationDelta / 4f, ref rotationVelocity, .5f);
+		noiseHeight = smoothLastRotation + .1f;
+
+		lastRotation = transform.rotation;
 	}
 
 	void UpdateWaterHeight()
@@ -79,6 +111,14 @@ public class WaterSurface : MonoBehaviour
 		yield return transform.TransformPoint(o + new Vector2(s.x, -s.y));
 	}
 
+	List< Vector2 > GetPointsUnderWater()
+	{
+		Vector2 s = collider.size / 2;
+		Vector2 o = collider.offset;
+
+		return GetBoxVertices().Where(p => p.y < GetBoxCenter().y + waterHeight).ToList();
+	}
+
 	Vector3 GetBoxCenter()
 	{
 		return transform.TransformPoint(collider.offset);
@@ -92,6 +132,7 @@ public class WaterSurface : MonoBehaviour
 		int mask = 1 << LayerMask.NameToLayer("ContainerWall");
 		int rightCollisionCount = Physics2D.RaycastNonAlloc(rightPos, Vector2.right, rightCollisions, checkSize * 2, mask);
 		int leftCollisionCount = Physics2D.RaycastNonAlloc(leftPos, Vector2.left, leftCollisions, checkSize * 2, mask);
+		int i;
 
 		if (perlinSamples < 0)
 			return ;
@@ -101,17 +142,39 @@ public class WaterSurface : MonoBehaviour
 			Vector2 start = rightCollisions[0].point;
 			Vector2 end = leftCollisions[0].point;
 
-			if (lineRenderer.positionCount != perlinSamples)
-				lineRenderer.positionCount = perlinSamples + 2;
+			var underWaterPoints = GetPointsUnderWater();
+
+			if (lineRenderer.positionCount != perlinSamples || underWaterPoints.Count != lastPointsUnderWaterCount)
+			{
+				lineRenderer.positionCount = perlinSamples + additionalSamples;
+				positions = new Vector3[perlinSamples + additionalSamples + underWaterPoints.Count];
+				triangulator = null;
+				lastPointsUnderWaterCount = underWaterPoints.Count;
+				waterMesh.Clear();
+			}
 			
 			float step = (start - end).magnitude / perlinSamples;
-			for (int i = 0; i < perlinSamples + 2; i++)
+			for (i = 0; i < perlinSamples + additionalSamples; i++)
 			{
 				float noise = Mathf.PerlinNoise(start.x + step * i + Time.time * scrollSpeed, start.y + Time.time * scrollSpeed);
-				Vector2 p = new Vector2(start.x + step * i - step, start.y + noise * noiseHeight);
+				Vector2 p = new Vector2(start.x + step * i - step *  (additionalSamples / 2), start.y + noise * noiseHeight * noiseHeightMultiplier);
+				positions[i] = p;
 				lineRenderer.SetPosition(i, p);
 			}
+
+			underWaterPoints.Sort((p1, p2) => p2.x.CompareTo(p1.x));
+			for (i = 0; i < underWaterPoints.Count; i++)
+				positions[perlinSamples + additionalSamples + i] = underWaterPoints[i];
 		}
+
+		if (triangulator == null)
+			triangulator = new Triangulator(positions);
+
+		waterMesh.vertices = positions;
+		waterMesh.triangles = triangulator.Triangulate();
+		waterMesh.RecalculateBounds();
+		if (meshFilter != null)
+			meshFilter.sharedMesh = waterMesh;
 	}
 
 	private void OnDrawGizmos()
@@ -121,16 +184,17 @@ public class WaterSurface : MonoBehaviour
 		if (collider == null)
 			collider = GetComponent< BoxCollider2D >();
 		Vector2 pos = center + Vector3.up * waterHeight - Vector3.right * checkSize;
+		Gizmos.color = Color.cyan;
 		Gizmos.DrawSphere(pos, .1f);
 
 		Vector3 waterPos = new Vector3(0, waterHeight + center.y, 0);
-		Gizmos.color = Color.blue;
-		Gizmos.DrawSphere(waterPos, .2f);
-
 		Gizmos.color = Color.green;
-		foreach (var p in GetBoxVertices())
+		Gizmos.DrawSphere(waterPos, .2f);
+		
+		Gizmos.color = Color.blue;
+		foreach (var p in GetPointsUnderWater())
 		{
-			Gizmos.DrawSphere(p, .2f);
+			Gizmos.DrawSphere(p, .3f);
 		}
 	}
 }
