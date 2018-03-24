@@ -113,9 +113,6 @@ public class WaterSurface : MonoBehaviour
 
 	List< Vector2 > GetPointsUnderWater()
 	{
-		Vector2 s = collider.size / 2;
-		Vector2 o = collider.offset;
-
 		return GetBoxVertices().Where(p => p.y < GetBoxCenter().y + waterHeight).ToList();
 	}
 
@@ -156,7 +153,7 @@ public class WaterSurface : MonoBehaviour
 			float step = (start - end).magnitude / perlinSamples;
 			for (i = 0; i < perlinSamples + additionalSamples; i++)
 			{
-				float noise = Mathf.PerlinNoise(start.x + step * i + Time.time * scrollSpeed, start.y + Time.time * scrollSpeed);
+				float noise = Mathf.PerlinNoise(start.x + step * i + Time.time * scrollSpeed, Time.time * scrollSpeed);
 				Vector2 p = new Vector2(start.x + step * i - step *  (additionalSamples / 2), start.y + noise * noiseHeight * noiseHeightMultiplier);
 				positions[i] = p;
 				lineRenderer.SetPosition(i, p);
