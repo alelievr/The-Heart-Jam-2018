@@ -13,8 +13,11 @@ public class BernardController : MonoBehaviour {
 	private	bool	collided;
 	private	GameObject	grabbed;
 	private	Transform	offsetGrabbed;
+	private	FixedJoint2D	joint;
 
 	public	bool isinwater;
+
+
 	// Use this for initialization
 	void Start () {
 		handCollider = Hand.GetComponent<CollidingDetector>();
@@ -22,17 +25,20 @@ public class BernardController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown(KeyCode.Mouse0) && handCollider.collided) {
+		if (Input.GetKeyDown(KeyCode.Mouse0) && handCollider.touch) {
 			grabbed = handCollider.grabbed;
+			joint = Hand.gameObject.AddComponent< FixedJoint2D >();
+			joint.connectedBody = grabbed.GetComponent< Rigidbody2D >();
 			grabbing = true;
 			offsetGrabbed = handCollider.grabbed.transform;
-			Debug.Log("catch");
 		} else if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			GameObject.Destroy(joint);
 			grabbing = false;
 		}
 		if (grabbing) {
-			Hand.transform.position += grabbed.transform.position - offsetGrabbed.position;
-			Hand.transform.eulerAngles +=  grabbed.transform.eulerAngles - offsetGrabbed.eulerAngles;
+			// Hand.transform.position += grabbed.transform.position - offsetGrabbed.position;
+			// Hand.transform.eulerAngles +=  grabbed.transform.eulerAngles - offsetGrabbed.eulerAngles;
 		}
+		// Debug.Log(grabbing);
 	}
 }
