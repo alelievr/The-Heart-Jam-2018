@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BernardController : MonoBehaviour {
+public class OumphController : MonoBehaviour {
 
 
 	public GameObject	arm;
@@ -10,7 +10,8 @@ public class BernardController : MonoBehaviour {
 	public float		mvtForce;
 	bool				canoumph = true;
 	public float		cdoumph = 1;
-	bool				isinoumph = false;
+	bool				axish = false;
+	bool				axisv = true;
 	// Use this for initialization
 	void Start () {
 		
@@ -20,18 +21,11 @@ public class BernardController : MonoBehaviour {
 	void Update () {
 		if (canoumph)
 		{
-			if (!isinoumph)
-				StartCoroutine("corouCanomph");
-			torse.AddForce(new Vector2(Input.GetAxis("Horizontal") * mvtForce, Input.GetAxis("Vertical") * mvtForce));
+			Input.GetAxisRaw("Vertical");
+			torse.AddForce(new Vector2((axish) ? Input.GetAxis("Horizontal") * mvtForce : 0,
+							(axisv) ?  Input.GetAxis("Vertical") * mvtForce : 0));
+			axish = (Input.GetAxisRaw("Horizontal") != 0) ? false : true;
+			axisv = (Input.GetAxisRaw("Vertical") != 0) ? false : true;
 		}
-	}
-
-	IEnumerable corouCanomph() {
-		isinoumph = true;
-		yield return new WaitForSeconds(0.1f);
-		canoumph = false;
-		yield return new WaitForSeconds(cdoumph);
-		canoumph = true;
-		isinoumph = false;
 	}
 }
