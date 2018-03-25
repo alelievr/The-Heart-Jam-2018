@@ -40,12 +40,13 @@ public class WaterSurface : MonoBehaviour
 	RaycastHit2D[]	rightCollisions = new RaycastHit2D[2];
 	RaycastHit2D[]	leftCollisions = new RaycastHit2D[2];
 
-	Transform 		player;
+	[HideInInspector]
+	public bool			playerisin;
+	public Transform 	playerpos;
 
 	private void Awake()
 	{
 		buoyancers = FindObjectsOfType< Buoyancy >();
-		player = FindObjectOfType<BernardController>().transform;
 		lastRotation = transform.rotation;
 	}
 
@@ -64,6 +65,8 @@ public class WaterSurface : MonoBehaviour
 		UpdateWaterHeight();
 		UpdateLineRenderer();
 		UpdateBuoyancers();
+		meshFilter.sharedMesh.RecalculateBounds();
+		playerisin = meshFilter.sharedMesh.bounds.Contains(playerpos.position);
 	}
 
 	void UpdateNoiseHeight()
@@ -169,7 +172,6 @@ public class WaterSurface : MonoBehaviour
 
 		if (triangulator == null)
 			triangulator = new Triangulator(positions);
-
 		waterMesh.vertices = positions;
 		waterMesh.triangles = triangulator.Triangulate();
 		waterMesh.RecalculateBounds();

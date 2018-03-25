@@ -400,10 +400,10 @@ MonoBehaviour:
     value: 0
   greytougoum:
     overrideState: 1
-    value: 2.04
+    value: 0
   noircissement:
     overrideState: 1
-    value: 0.795
+    value: 0
 --- !u!114 &114950045317625024
 MonoBehaviour:
   m_ObjectHideFlags: 3

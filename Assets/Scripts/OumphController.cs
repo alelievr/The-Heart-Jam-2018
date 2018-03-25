@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class OmphController : MonoBehaviour {
+public class OumphController : MonoBehaviour {
 
 
 	public GameObject	arm;

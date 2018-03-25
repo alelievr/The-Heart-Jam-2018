@@ -10,14 +10,17 @@ public class ShaderControle : MonoBehaviour {
 	public Transform	container;
 	public Transform	player;
 	public float		oxygen;
-	public float		speedoxygentmp = 1;
+	public float		speedoxygen = 1;
+	public float		speedoxygenback = 1;
 	PostProcessVolume	volume;
 	PreDeathEffect		predeatheffect;
 	Vignette			vignette;
 	public float		distortionIntensity;
+	WaterSurface		watersurface;
 
 	void OnEnable () {
 		volume = GetComponent<PostProcessVolume>();
+		watersurface = FindObjectOfType<WaterSurface>();
 
 		bool foundEffectSettings = volume.profile.TryGetSettings<PreDeathEffect>(out predeatheffect);
 		if(!foundEffectSettings)
@@ -32,7 +35,7 @@ public class ShaderControle : MonoBehaviour {
 	void Update () {
 		oxygenchange();
 		depthchange();
-		oxygen += Time.deltaTime * speedoxygentmp;
+		oxygen +=  Time.deltaTime * ((watersurface.playerisin) ? speedoxygen : -speedoxygenback);
 		depth = -(container.position.y);
 		Vector3 tmp = Camera.main.WorldToScreenPoint(player.position);
 		tmp.x /= Camera.main.pixelWidth;
@@ -51,8 +54,10 @@ public class ShaderControle : MonoBehaviour {
 			return;
 		}
 		predeatheffect.Strenght.Override((oxygen > 50) ? (oxygen - 50) / 110 : 0);
-		predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
+		// predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
 		predeatheffect.greystrenght.Override((oxygen > 60) ? (oxygen - 60) / 40 : 0);
+		if (oxygen > 150)
+			Debug.Log("DEADED");
 
     }
 
