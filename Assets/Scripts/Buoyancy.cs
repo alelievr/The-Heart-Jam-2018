@@ -10,7 +10,7 @@ public class Buoyancy : MonoBehaviour
 
 	public float floatThreshold = 2;
 	public float waterDensity = .125f;
-	public float downForce = 4;
+	public float downForce = 5;
 
 	Rigidbody2D rbody;
 
