@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-<<<<<<< HEAD
-public class OumphController : MonoBehaviour {
-=======
+
 public class OmphController : MonoBehaviour {
->>>>>>> 5b2877c2f94019268334964a00119681d901ed71
 
 
 	public GameObject	arm;
