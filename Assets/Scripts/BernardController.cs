@@ -13,6 +13,8 @@ public class BernardController : MonoBehaviour {
 	private	bool	collided;
 	private	GameObject	grabbed;
 	private	Transform	offsetGrabbed;
+
+	public	bool isinwater;
 	// Use this for initialization
 	void Start () {
 		handCollider = Hand.GetComponent<CollidingDetector>();
