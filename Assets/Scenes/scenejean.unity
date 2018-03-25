@@ -1001,6 +1001,7 @@ MonoBehaviour:
   m_AfterStackBundles:
   - assemblyQualifiedName: PreDeathEffect, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+<<<<<<< HEAD
 --- !u!82 &1334439414
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1081,6 +1082,8 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+=======
+>>>>>>> 353e7ffd02e8b8ef882bc3c84cde420c43d2532b
 --- !u!1 &1334541979
 GameObject:
   m_ObjectHideFlags: 0
