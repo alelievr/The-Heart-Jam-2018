@@ -31,7 +31,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 0
     value: 0
@@ -73,7 +73,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   mode:
     overrideState: 0
     value: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
   intensity:
-    overrideState: 0
+    overrideState: 1
     value: 0
   smoothness:
     overrideState: 0
@@ -115,7 +115,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   gradingMode:
     overrideState: 0
     value: 1
@@ -367,43 +367,43 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 0
+    value: 1
   DisplacementTex:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 82ee237954b804cf181b1dd81df57bb6, type: 3}
   DisplacementTexy:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 82ee237954b804cf181b1dd81df57bb6, type: 3}
   VeineTex:
-    overrideState: 0
-    value: {fileID: 0}
+    overrideState: 1
+    value: {fileID: 2800000, guid: 82ee237954b804cf181b1dd81df57bb6, type: 3}
   bwBlend:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 1.23
   Zoom:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0.9
   Speed:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 3.58
   Strenght:
-    overrideState: 0
-    value: 1
+    overrideState: 1
+    value: 0
   CenterPoint:
-    overrideState: 0
-    value: {x: 0.5, y: 0.5, z: 0.5, w: 0.5}
+    overrideState: 1
+    value: {x: 0.5, y: 0.5, z: 0, w: 0}
   vignette_size:
-    overrideState: 0
+    overrideState: 1
     value: 0
   greystrenght:
-    overrideState: 0
+    overrideState: 1
     value: 0
   greytougoum:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 2.04
   noircissement:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.795
 --- !u!114 &114950045317625024
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -418,7 +418,7 @@ MonoBehaviour:
   active: 1
   enabled:
     overrideState: 1
-    value: 1
+    value: 0
   intensity:
     overrideState: 1
     value: 0

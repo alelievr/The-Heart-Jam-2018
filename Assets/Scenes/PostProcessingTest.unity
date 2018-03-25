@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedProfile: {fileID: 11400000, guid: c920de7eb5a2a4bcc8f5bdbf3defd159, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 35abade2fcb4345989512af352908503, type: 2}
   isGlobal: 1
   blendDistance: 0
   weight: 1
@@ -300,10 +300,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54d600cd40e994d61b9c900ddadbc638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  depth: 0
+  container: {fileID: 1801021434}
+  player: {fileID: 1801021434}
   oxygen: 0
   speedoxygentmp: 0
-  speeddephttmp: 3.51
   distortionIntensity: 0
 --- !u!1 &801642641
 GameObject:

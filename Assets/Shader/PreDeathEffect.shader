@@ -73,7 +73,8 @@
 
             //noircisssement
 
-            color.rgb = color.rgb *  clamp(1 - _noircissement * (distancetocenter + 1), 0, 1);
+                float tmp2 = 1 + distancetocenter / 1.2;
+                color.rgb = color.rgb *  clamp(1 - _noircissement * tmp2, 0, 1);
 
             //veination
 
@@ -85,7 +86,7 @@
             //     color.y = color.y * (1 - veinator.x) + 70. / 256. * veinator.x;
             //     color.z = color.z * (1 - veinator.x) + 42. / 256. * veinator.x;
             // }
-            // color = float4(tougoumprogression,tougoumprogression, tougoumprogression, 0);
+            // color = float4(distancetocenter / 1.2  ,distancetocenter / 1.2  , distancetocenter / 1.2 , 0);
             return color;
         }
 

@@ -40,9 +40,12 @@ public class WaterSurface : MonoBehaviour
 	RaycastHit2D[]	rightCollisions = new RaycastHit2D[2];
 	RaycastHit2D[]	leftCollisions = new RaycastHit2D[2];
 
+	Transform 		player;
+
 	private void Awake()
 	{
 		buoyancers = FindObjectsOfType< Buoyancy >();
+		player = FindObjectOfType<BernardController>().transform;
 		lastRotation = transform.rotation;
 	}
 

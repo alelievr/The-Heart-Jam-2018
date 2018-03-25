@@ -6,17 +6,26 @@ using UnityEngine.Rendering.PostProcessing;
 public class ShaderControle : MonoBehaviour {
 
 	// Use this for initialization
-	public float		depth;
+	float				depth;
+	public Transform	container;
+	public Transform	player;
 	public float		oxygen;
 	public float		speedoxygentmp = 1;
-	public float		speeddephttmp = 1;
 	PostProcessVolume	volume;
 	PreDeathEffect		predeatheffect;
 	Vignette			vignette;
 	public float		distortionIntensity;
 
 	void OnEnable () {
-		volume = GetComponent<PostProcessVolume>();		
+		volume = GetComponent<PostProcessVolume>();
+
+		bool foundEffectSettings = volume.profile.TryGetSettings<PreDeathEffect>(out predeatheffect);
+		if(!foundEffectSettings)
+		{
+			enabled = false;
+			Debug.Log("Cant load PreDeathEffect settings");
+			return;
+		}
 	}
 	
 	// Update is called once per frame
@@ -24,7 +33,12 @@ public class ShaderControle : MonoBehaviour {
 		oxygenchange();
 		depthchange();
 		oxygen += Time.deltaTime * speedoxygentmp;
-		depth += Time.deltaTime * speeddephttmp;
+		depth = -(container.position.y);
+		Vector3 tmp = Camera.main.WorldToScreenPoint(player.position);
+		tmp.x /= Camera.main.pixelWidth;
+		tmp.y /= Camera.main.pixelHeight;
+		predeatheffect.CenterPoint.value = tmp;
+		// Debug.Log(depth);
 		// cheapDistorsion();
 	}
 
@@ -34,13 +48,6 @@ public class ShaderControle : MonoBehaviour {
 		{
 			enabled = false;
 			Debug.Log("Cant load PostProcess volume");
-			return;
-		}
-        bool foundEffectSettings = volume.profile.TryGetSettings<PreDeathEffect>(out predeatheffect);
-		if(!foundEffectSettings)
-		{
-			enabled = false;
-			Debug.Log("Cant load PreDeathEffect settings");
 			return;
 		}
 		predeatheffect.Strenght.Override((oxygen > 50) ? (oxygen - 50) / 110 : 0);
@@ -58,7 +65,7 @@ public class ShaderControle : MonoBehaviour {
 			Debug.Log("Cant load PreDeathEffect settings");
 			return;
 		}
-		predeatheffect.noircissement.Override(depth / 120);
+		predeatheffect.noircissement.Override(depth / 300);
 	}
 
 	void cheapDistorsion()
