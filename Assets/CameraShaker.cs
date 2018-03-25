@@ -41,12 +41,6 @@ public class CameraShaker : MonoBehaviour {
 		noise.m_FrequencyGain = defaultfrequency;
     }
 
-    public void Noise(float amplitudeGain, float frequencyGain)
-    {
-        noise.m_AmplitudeGain = amplitudeGain;
-        noise.m_FrequencyGain = frequencyGain;
-    }
-
     // Update is called once per frame
     void Update () {
 		if (shake)
