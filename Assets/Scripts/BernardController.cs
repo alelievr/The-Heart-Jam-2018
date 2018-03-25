@@ -16,6 +16,8 @@ public class BernardController : MonoBehaviour {
 	private	FixedJoint2D	joint;
 
 	public	bool isinwater;
+
+
 	// Use this for initialization
 	void Start () {
 		handCollider = Hand.GetComponent<CollidingDetector>();

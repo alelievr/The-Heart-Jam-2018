@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
+public enum ObstacleType
+{
+	Rock,
+	Shark,
+	Cliff,
+}
+
 [System.Serializable]
 public struct PostProcessRange
 {
-	public float	range;
+	public float			range;
+	public ObstacleType		type;
+	public List< Vector3 >	forcePoints;
 
-	public PostProcessRange(float range = 10)
+	public PostProcessRange(float range = 10, ObstacleType type = ObstacleType.Cliff, List< Vector3 > points = null)
 	{
 		this.range = range;
+		this.type = type;
+		this.forcePoints = new List< Vector3 >();
 	}
+	
 }
 
 [ExecuteInEditMode]
