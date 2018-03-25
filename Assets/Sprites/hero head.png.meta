@@ -1,9 +1,10 @@
 fileFormatVersion: 2
 guid: 60803964f0ffe4fcaae9dd04bad578ad
-timeCreated: 1521851111
+timeCreated: 1521919212
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: hero head_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -31,7 +32,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 0
     aniso: -1
     mipBias: -1
     wrapU: 1
@@ -40,7 +41,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -66,9 +67,48 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
     androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: hero head_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 78
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 12.463409, y: 1.2769775}
+        - {x: 7.93029, y: 5.280449}
+        - {x: 4.9337616, y: 10.729973}
+        - {x: -5.1418457, y: 10.878624}
+        - {x: -7.156784, y: 6.0539474}
+        - {x: -10.4529915, y: 5.893692}
+        - {x: -12.23344, y: 4.35363}
+        - {x: -12.306622, y: 1.562767}
+        - {x: -7.9302864, y: -1.2769699}
+        - {x: -7.1602554, y: -4.970352}
+        - {x: -2.3936996, y: -10.733444}
+        - {x: 3.7003212, y: -10.733437}
+        - {x: 7.3936996, y: -7.1933746}
+        - {x: 8.236916, y: -3.9703522}
+        - {x: 12.233444, y: -1.4302826}
+      tessellationDetail: 1
     outline: []
     physicsShape: []
   spritePackingTag: 

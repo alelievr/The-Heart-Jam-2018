@@ -12,33 +12,40 @@ public class EventTracker : MonoBehaviour
 	void Awake()
 	{
 		instance = this;
+
+		LevelStart();
 	}
 
-	public void LevelStart()
+	void LevelStart()
 	{
 		Debug.Log("Level start !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		AnalyticsEvent.LevelStart(sceneName, new Dictionary< string, object > {{"levelNumber",int.Parse(Regex.Match(sceneName, @"\d+").Value) }});
+		AnalyticsEvent.LevelStart(sceneName);
+	}
+
+	public void LayerUpdate(int layer)
+	{
+		AnalyticsEvent.LevelUp(layer);
 	}
 
 	public void LevelFail()
 	{
 		Debug.Log("Level fail !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		AnalyticsEvent.LevelFail(sceneName, new Dictionary< string, object > {{"levelNumber", int.Parse(Regex.Match(sceneName, @"\d+").Value) }});
+		AnalyticsEvent.LevelFail(sceneName);
 	}
 	
 	public void LevelComplete()
 	{
 		Debug.Log("Level Completed !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		AnalyticsEvent.LevelComplete(sceneName, new Dictionary< string, object > {{"levelNumber", int.Parse(Regex.Match(sceneName, @"\d+").Value) }});
+		AnalyticsEvent.LevelComplete(sceneName);
 	}
 	
 	public void LevelQuit()
 	{
 		Debug.Log("Level Quit !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		AnalyticsEvent.LevelQuit(sceneName, new Dictionary< string, object > {{"levelNumber", int.Parse(Regex.Match(sceneName, @"\d+").Value) }});
+		AnalyticsEvent.LevelQuit(sceneName);
 	}
 }
