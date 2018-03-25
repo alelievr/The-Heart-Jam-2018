@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BernardController : MonoBehaviour {
+public class OmphController : MonoBehaviour {
 
 
 	public GameObject	arm;

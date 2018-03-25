@@ -4,34 +4,33 @@ using UnityEngine;
 
 public class BernardController : MonoBehaviour {
 
+	public	GameObject	Hand;
 
-	public GameObject	arm;
-	public Rigidbody2D	torse;
-	public float		mvtForce;
-	bool				canoumph = true;
-	public float		cdoumph = 1;
-	bool				isinoumph = false;
+	[HideInInspector]
+	public	bool		grabbing;
+
+	private CollidingDetector	handCollider;
+	private	bool	collided;
+	private	GameObject	grabbed;
+	private	Transform	offsetGrabbed;
 	// Use this for initialization
 	void Start () {
-		
+		handCollider = Hand.GetComponent<CollidingDetector>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (canoumph)
-		{
-			if (!isinoumph)
-				StartCoroutine("corouCanomph");
-			torse.AddForce(new Vector2(Input.GetAxis("Horizontal") * mvtForce, Input.GetAxis("Vertical") * mvtForce));
+		if (Input.GetKeyDown(KeyCode.Mouse0) && handCollider.collided) {
+			grabbed = handCollider.grabbed;
+			grabbing = true;
+			offsetGrabbed = handCollider.grabbed.transform;
+			Debug.Log("catch");
+		} else if (Input.GetKeyUp(KeyCode.Mouse0)) {
+			grabbing = false;
 		}
-	}
-
-	IEnumerable corouCanomph() {
-		isinoumph = true;
-		yield return new WaitForSeconds(0.1f);
-		canoumph = false;
-		yield return new WaitForSeconds(cdoumph);
-		canoumph = true;
-		isinoumph = false;
+		if (grabbing) {
+			Hand.transform.position += grabbed.transform.position - offsetGrabbed.position;
+			Hand.transform.eulerAngles +=  grabbed.transform.eulerAngles - offsetGrabbed.eulerAngles;
+		}
 	}
 }

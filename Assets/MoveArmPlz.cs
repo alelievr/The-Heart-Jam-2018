@@ -4,20 +4,29 @@ using UnityEngine;
 
 public class MoveArmPlz : MonoBehaviour {
 
-	public HingeJoint2D		arm;
-	public float			movePower = 100;
+	public	HingeJoint2D		arm;
+	public	GameObject			restOfTheBody;
+	public	float				movePower = 100;
+	public	BernardController	bController;
 
-	Rigidbody2D				armRigidbody;
+	private	Rigidbody2D			armRigidbody;
+	private	Rigidbody2D			rotbRigidbody;
+	private	bool				grabbing;
 
 	// Use this for initialization
 	void Start () {
 		armRigidbody = arm.GetComponent< Rigidbody2D >();
+		rotbRigidbody = restOfTheBody.GetComponent< Rigidbody2D >();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		Vector2 mousePos = Input.mousePosition - Camera.main.WorldToScreenPoint(arm.transform.position);
 
-		armRigidbody.AddForce(new Vector2(mousePos.x / 4, mousePos.y).normalized * movePower);
+		Vector2 mvt = new Vector2(mousePos.x / 4, mousePos.y).normalized * movePower;
+		armRigidbody.AddForce(mvt);
+		if (bController.grabbing) {
+			rotbRigidbody.AddForce(-mvt * 2);
+		}
 	}
 }
