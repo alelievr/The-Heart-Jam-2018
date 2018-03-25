@@ -69,7 +69,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4830808035301838}
   - component: {fileID: 61289448447183986}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: containerCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1856920810746170}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.4, y: 2.7, z: 2.1132812}
+  m_LocalPosition: {x: 13.7, y: 10.5, z: 2.1132812}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4830808035301838}
@@ -309,10 +309,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0.4
+  m_Mass: 4000
+  m_LinearDrag: 2
+  m_AngularDrag: 0.2
+  m_GravityScale: 0.2
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -326,7 +326,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1680434254439062}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2bf20d9c6944a44a79957ec9dddd0d6b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -401,7 +401,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1661960010605520}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2bf20d9c6944a44a79957ec9dddd0d6b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -426,7 +426,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1211970280064164}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2bf20d9c6944a44a79957ec9dddd0d6b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -451,7 +451,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1508949055267832}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2bf20d9c6944a44a79957ec9dddd0d6b, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -482,11 +482,13 @@ MonoBehaviour:
   airPercent: 29.3
   checkSize: 10
   perlinSamples: 20
-  additionalSamples: 4
+  additionalSamples: 3
   scrollSpeed: 1
   noiseHeightMultiplier: 1
   meshFilter: {fileID: 33809457885643374}
   collider: {fileID: 61173747635218936}
+  playerisin: 1
+  playerpos: {fileID: 0}
 --- !u!120 &120194662044594250
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -522,30 +524,29 @@ LineRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -10
   m_Positions:
-  - {x: 5.053614, y: 1.7343048, z: 0}
-  - {x: 5.3786364, y: 1.7464904, z: 0}
-  - {x: 5.703658, y: 1.75791, z: 0}
-  - {x: 6.02868, y: 1.757634, z: 0}
-  - {x: 6.353702, y: 1.7452565, z: 0}
-  - {x: 6.678724, y: 1.7498267, z: 0}
-  - {x: 7.003746, y: 1.7694057, z: 0}
-  - {x: 7.328768, y: 1.7832823, z: 0}
-  - {x: 7.6537895, y: 1.7604723, z: 0}
-  - {x: 7.9788117, y: 1.7384586, z: 0}
-  - {x: 8.303833, y: 1.7386231, z: 0}
-  - {x: 8.628856, y: 1.7452209, z: 0}
-  - {x: 8.953877, y: 1.7302787, z: 0}
-  - {x: 9.278899, y: 1.7325771, z: 0}
-  - {x: 9.603921, y: 1.7599554, z: 0}
-  - {x: 9.928943, y: 1.7658381, z: 0}
-  - {x: 10.253965, y: 1.7714064, z: 0}
-  - {x: 10.578987, y: 1.7637331, z: 0}
-  - {x: 10.904009, y: 1.7418478, z: 0}
-  - {x: 11.229031, y: 1.7170546, z: 0}
-  - {x: 11.554052, y: 1.7242572, z: 0}
-  - {x: 11.879075, y: 1.7480153, z: 0}
-  - {x: 12.204097, y: 1.7762139, z: 0}
-  - {x: 12.529119, y: 1.784813, z: 0}
+  - {x: 13.678637, y: 9.543016, z: 0}
+  - {x: 14.003658, y: 9.56032, z: 0}
+  - {x: 14.32868, y: 9.566778, z: 0}
+  - {x: 14.653702, y: 9.559237, z: 0}
+  - {x: 14.9787245, y: 9.551786, z: 0}
+  - {x: 15.303746, y: 9.562978, z: 0}
+  - {x: 15.628768, y: 9.580167, z: 0}
+  - {x: 15.95379, y: 9.583144, z: 0}
+  - {x: 16.278812, y: 9.556362, z: 0}
+  - {x: 16.603834, y: 9.537292, z: 0}
+  - {x: 16.928856, y: 9.54911, z: 0}
+  - {x: 17.253878, y: 9.572682, z: 0}
+  - {x: 17.5789, y: 9.571386, z: 0}
+  - {x: 17.903921, y: 9.552437, z: 0}
+  - {x: 18.228943, y: 9.5394335, z: 0}
+  - {x: 18.553965, y: 9.543055, z: 0}
+  - {x: 18.878986, y: 9.557202, z: 0}
+  - {x: 19.20401, y: 9.571181, z: 0}
+  - {x: 19.529032, y: 9.573925, z: 0}
+  - {x: 19.854053, y: 9.551629, z: 0}
+  - {x: 20.179075, y: 9.526046, z: 0}
+  - {x: 20.504097, y: 9.525673, z: 0}
+  - {x: 20.829119, y: 9.521976, z: 0}
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.2

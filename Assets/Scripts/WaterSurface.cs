@@ -66,7 +66,8 @@ public class WaterSurface : MonoBehaviour
 		UpdateLineRenderer();
 		UpdateBuoyancers();
 		meshFilter.sharedMesh.RecalculateBounds();
-		playerisin = meshFilter.sharedMesh.bounds.Contains(playerpos.position);
+		if (playerpos != null)
+			playerisin = meshFilter.sharedMesh.bounds.Contains(playerpos.position);
 	}
 
 	void UpdateNoiseHeight()
