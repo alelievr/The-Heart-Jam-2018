@@ -25,8 +25,5 @@ public class MoveArmPlz : MonoBehaviour {
 
 		Vector2 mvt = new Vector2(mousePos.x / 4, mousePos.y).normalized * movePower;
 		armRigidbody.AddForce(mvt);
-		if (bController.grabbing) {
-			rotbRigidbody.AddForce(-mvt * 2);
-		}
 	}
 }
