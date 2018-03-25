@@ -31,7 +31,7 @@ MonoBehaviour:
     value: 1
   intensity:
     overrideState: 1
-    value: -100
+    value: 0
   intensityX:
     overrideState: 0
     value: 1
@@ -259,7 +259,7 @@ MonoBehaviour:
         m_Curve: []
         m_PreInfinity: 2
         m_PostInfinity: 2
-        m_RotationOrder: 4
+        m_RotationOrder: 0
       m_Loop: 1
       m_ZeroValue: 0.5
       m_Range: 1
