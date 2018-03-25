@@ -12,9 +12,9 @@ public class InverseKinematics : MonoBehaviour {
 	public Transform elbow;
 	public Transform target;
 	[Space(20)]
-	public Vector2 uppperArm_OffsetRotation;
-	public Vector2 forearm_OffsetRotation;
-	public Vector2 hand_OffsetRotation;
+	public Vector3 uppperArm_OffsetRotation;
+	public Vector3 forearm_OffsetRotation;
+	public Vector3 hand_OffsetRotation;
 	[Space(20)]
 	public bool handMatchesTargetRotation = true;
 	[Space(20)]
@@ -34,6 +34,45 @@ public class InverseKinematics : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
+		if(upperArm != null && forearm != null && hand != null && elbow != null && target != null){
+			upperArm.LookAt (target, elbow.position - upperArm.position);
+			upperArm.Rotate (uppperArm_OffsetRotation);
+
+			Vector3 cross = Vector3.Cross (elbow.position - upperArm.position, forearm.position - upperArm.position);
+
+
+
+			upperArm_Length = Vector3.Distance (upperArm.position, forearm.position);
+			forearm_Length =  Vector3.Distance (forearm.position, hand.position);
+			arm_Length = upperArm_Length + forearm_Length;
+			targetDistance = Vector3.Distance (upperArm.position, target.position);
+			targetDistance = Mathf.Min (targetDistance, arm_Length - arm_Length * 0.001f);
+
+			adyacent = ((upperArm_Length * upperArm_Length) - (forearm_Length * forearm_Length) + (targetDistance * targetDistance)) / (2*targetDistance);
+
+			angle = Mathf.Acos (adyacent / upperArm_Length) * Mathf.Rad2Deg;
+
+			upperArm.RotateAround (upperArm.position, cross, -angle);
+
+			forearm.LookAt(target, cross);
+			forearm.Rotate (forearm_OffsetRotation);
+
+			if(handMatchesTargetRotation){
+				hand.rotation = target.rotation;
+				hand.Rotate (hand_OffsetRotation);
+			}
+			
+			if(debug){
+				if (forearm != null && elbow != null) {
+					Debug.DrawLine (forearm.position, elbow.position, Color.blue);
+				}
+
+				if (upperArm != null && target != null) {
+					Debug.DrawLine (upperArm.position, target.position, Color.red);
+				}
+			}
+					
+		}
 		
 	}
 
