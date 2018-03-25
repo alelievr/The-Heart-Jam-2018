@@ -55,7 +55,7 @@ public class ShaderControle : MonoBehaviour {
 		}
 		predeatheffect.Strenght.Override((oxygen > 50) ? (oxygen - 50) / 110 : 0);
 		// predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
-		predeatheffect.greystrenght.Override((oxygen > 60) ? (oxygen - 60) / 40 : 0);
+		predeatheffect.greystrenght.Override((oxygen > 300) ? (oxygen - 30) / 40 : 0);
 		if (oxygen > 150)
 			Debug.Log("DEADED");
 

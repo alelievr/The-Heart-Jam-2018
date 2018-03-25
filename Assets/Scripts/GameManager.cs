@@ -44,10 +44,12 @@ public class GameManager : MonoBehaviour
 
 		tracker.LevelComplete();
 
-		if (levelIndex == 4)
-			levelIndex = -1;
+		// if (levelIndex == 4)
+		// 	levelIndex = -1;
 		
-		SceneManager.LoadScene("level" + (levelIndex + 1));
+		// SceneManager.LoadScene("level" + (levelIndex + 1));
+		if (SceneManager.GetActiveScene().name == "Scenejean")
+			SceneManager.LoadScene("Gab DownToTheAbyss");
 	}
 
 	public void Quit()

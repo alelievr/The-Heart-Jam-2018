@@ -6,6 +6,7 @@ public class LayerManager : MonoBehaviour
 {
 	public GameObject	target;
 	public Gradient		cameraBackground;
+	public Rigidbody2D containerRigidbody;
 
 	BoxCollider[]		colliders;
 	Layer[]				layers;
@@ -41,6 +42,9 @@ public class LayerManager : MonoBehaviour
 			}
 		}
 
+		if (currentLayer != -1)
+			ApplyLayerRandomHit(currentLayer);
+
 		mainCam.backgroundColor = cameraBackground.Evaluate(-mainCam.transform.position.y / postProcessingManager.maxDepth);
 
 		if (currentLayer != lastLayer)
@@ -50,5 +54,23 @@ public class LayerManager : MonoBehaviour
 		}
 
 		lastLayer = currentLayer;
+	}
+
+	void ApplyLayerRandomHit(int currentLayer)
+	{
+		if (Random.value < .01f)
+		{
+			var p = postProcessingManager.ranges[currentLayer - 1];
+
+			switch (p.type)
+			{
+				case ObstacleType.Shark:
+					Vector2 point = p.forcePoints[Random.Range(0, p.forcePoints.Count)];
+					Debug.Log("Shark: " + point);
+					containerRigidbody.AddForceAtPosition((Vector2.right * point.x).normalized * 1000, (Vector3)point + transform.position, ForceMode2D.Impulse);
+					Debug.DrawRay((Vector3)point + transform.position, Vector2.right * point.x * 10, Color.red, 1);
+					break ;
+			}
+		}
 	}
 }
