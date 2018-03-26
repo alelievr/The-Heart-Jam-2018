@@ -74,7 +74,7 @@ public class WaterSurface : MonoBehaviour
 	{
 	    float rotationDelta = Quaternion.Angle(transform.rotation, lastRotation);
 		
-		smoothLastRotation = Mathf.SmoothDamp(smoothLastRotation, rotationDelta / 4f, ref rotationVelocity, .5f);
+		smoothLastRotation = Mathf.SmoothDamp(smoothLastRotation, rotationDelta, ref rotationVelocity, .5f);
 		noiseHeight = smoothLastRotation + .1f;
 
 		lastRotation = transform.rotation;
@@ -150,15 +150,15 @@ public class WaterSurface : MonoBehaviour
 
 			if (lineRenderer.positionCount != perlinSamples || underWaterPoints.Count != lastPointsUnderWaterCount)
 			{
-				lineRenderer.positionCount = perlinSamples + additionalSamples;
-				positions = new Vector3[perlinSamples + additionalSamples + underWaterPoints.Count];
+				lineRenderer.positionCount = perlinSamples + additionalSamples + 1;
+				positions = new Vector3[perlinSamples + additionalSamples + underWaterPoints.Count + 1];
 				triangulator = null;
 				lastPointsUnderWaterCount = underWaterPoints.Count;
 				waterMesh.Clear();
 			}
 			
 			float step = (start - end).magnitude / perlinSamples;
-			for (i = 0; i < perlinSamples + additionalSamples; i++)
+			for (i = 0; i <= perlinSamples + additionalSamples; i++)
 			{
 				float noise = Mathf.PerlinNoise(start.x + step * i + Time.time * scrollSpeed, Time.time * scrollSpeed);
 				Vector2 p = new Vector2(start.x + step * i - step *  (additionalSamples / 2), start.y + noise * noiseHeight * noiseHeightMultiplier);
@@ -168,7 +168,7 @@ public class WaterSurface : MonoBehaviour
 
 			underWaterPoints.Sort((p1, p2) => p2.x.CompareTo(p1.x));
 			for (i = 0; i < underWaterPoints.Count; i++)
-				positions[perlinSamples + additionalSamples + i] = underWaterPoints[i];
+				positions[perlinSamples + additionalSamples + i + 1] = underWaterPoints[i];
 		}
 
 		if (triangulator == null)
