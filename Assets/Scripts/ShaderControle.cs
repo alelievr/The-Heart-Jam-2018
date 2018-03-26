@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
 
 public class ShaderControle : MonoBehaviour {
@@ -44,6 +45,8 @@ public class ShaderControle : MonoBehaviour {
 		tmp.x /= Camera.main.pixelWidth;
 		tmp.y /= Camera.main.pixelHeight;
 		predeatheffect.CenterPoint.value = tmp;
+		if (depth > ppm.maxDepth)
+			SceneManager.LoadScene("end");
 		// Debug.Log(depth);
 		// cheapDistorsion();
 	}
