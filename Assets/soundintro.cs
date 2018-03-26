@@ -23,7 +23,6 @@ public class soundintro : MonoBehaviour {
 	{
 		if (step == soundbystep.Count)
 		{
-			Time.timeScale = 0;
 			SceneManager.LoadScene("DownToTheAbyssFinal");
 		}
 		if (aus == null)
