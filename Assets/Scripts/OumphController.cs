@@ -18,7 +18,7 @@ public class OumphController : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		if (water.playerisin)
 		{
 			torse.AddForce(new Vector2(Random.Range(-20000f * Time.deltaTime, 20000f * Time.deltaTime) , Random.Range(-20000f * Time.deltaTime, 20000f * Time.deltaTime)));
