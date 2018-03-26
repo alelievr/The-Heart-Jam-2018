@@ -6,13 +6,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 	public static GameManager instance;
+
+	bool		lose = false;
 	
 	EventTracker tracker;
 
 	void Awake()
 	{
+		DontDestroyOnLoad(this);
 		Time.timeScale = 1;
 		instance = this;
+	}
+
+	private void Start()
+	{
 		tracker = GetComponent< EventTracker >();
 	}
 
@@ -29,32 +36,28 @@ public class GameManager : MonoBehaviour
 		tracker.LevelFail();
 		Time.timeScale = 0;
 		GUIManager.instance.ShowLosePanel();
+		lose = true;
 	}
 
 	public void Restart()
 	{
 		Debug.Log("Restart!");
 		tracker.LevelFail();
+		Time.timeScale = 1;
+		lose = false;
 		SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-	}
-
-	public void NextLevel()
-	{
-		int levelIndex = int.Parse(System.Text.RegularExpressions.Regex.Match(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name, @"\d+").Value);
-
-		tracker.LevelComplete();
-
-		// if (levelIndex == 4)
-		// 	levelIndex = -1;
-		
-		// SceneManager.LoadScene("level" + (levelIndex + 1));
-		if (SceneManager.GetActiveScene().name == "Scenejean")
-			SceneManager.LoadScene("Gab DownToTheAbyss");
 	}
 
 	public void Quit()
 	{
 		tracker.LevelQuit();
 		Application.Quit();
+	}
+
+	private void Update()
+	{
+		Debug.Log("Loose: " + lose);
+		if (lose && Input.GetKeyDown(KeyCode.Space))
+			Restart();
 	}
 }

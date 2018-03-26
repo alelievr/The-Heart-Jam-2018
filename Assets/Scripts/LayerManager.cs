@@ -71,7 +71,7 @@ public class LayerManager : MonoBehaviour
 
 	void ApplyLayerRandomHit(int currentLayer)
 	{
-		if (Random.value < .002f * currentLayer)
+		if (Random.value < 0.001f + 0.0001f * currentLayer)
 		{
 			var p = postProcessingManager.ranges[0];
 
@@ -80,7 +80,7 @@ public class LayerManager : MonoBehaviour
 				case ObstacleType.Shark:
 					Vector2 point = p.forcePoints[Random.Range(0, p.forcePoints.Count)];
 					containerRigidbody.AddForceAtPosition((Vector2.right * point.x).normalized * 600, (Vector3)point + transform.position, ForceMode2D.Impulse);
-					AudioSource.PlayClipAtPoint(clang, (Vector3)point + transform.position);
+					AudioSource.PlayClipAtPoint(clang, (Vector3)point + transform.position, 1);
 					break ;
 
 				case ObstacleType.Rock:

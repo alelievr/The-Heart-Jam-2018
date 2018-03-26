@@ -24,11 +24,10 @@ public class PedroController : MonoBehaviour {
 		Vector2 mvt = dir * speed;
 		if (water.playerisin)
 			bodyrb.AddForce(mvt);
-		if (mvt.x != 0 || mvt.y != 0)
-			Debug.Log(mvt);
 	}
 	// Update is called once per frame
 	void Update () {
-				MovePedro();
+		bodyrb.AddForce(new Vector2(Random.Range(-1500f, 1500f) , Random.Range(-1500f, 1500f)));
+		MovePedro();
 	}
 }
