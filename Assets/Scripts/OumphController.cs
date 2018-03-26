@@ -9,19 +9,19 @@ public class OumphController : MonoBehaviour {
 	public GameObject	arm;
 	public Rigidbody2D	torse;
 	public float		mvtForce;
-	bool				canoumph = true;
-	public float		cdoumph = 1;
 	bool				axish = false;
 	bool				axisv = true;
+	WaterSurface		water;
 	// Use this for initialization
 	void Start () {
-		
+		water = FindObjectOfType<WaterSurface>();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (canoumph)
+		if (water.playerisin)
 		{
+			torse.AddForce(new Vector2(Random.Range(-2000f, 2000f) , Random.Range(-2000f, 2000f)));
 			Input.GetAxisRaw("Vertical");
 			torse.AddForce(new Vector2((axish) ? Input.GetAxis("Horizontal") * mvtForce : 0,
 							(axisv) ?  Input.GetAxis("Vertical") * mvtForce : 0));

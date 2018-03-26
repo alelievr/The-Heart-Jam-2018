@@ -17,10 +17,12 @@ public class ShaderControle : MonoBehaviour {
 	Vignette			vignette;
 	public float		distortionIntensity;
 	WaterSurface		watersurface;
+	PostProcessingManager	ppm;
 
 	void OnEnable () {
 		volume = GetComponent<PostProcessVolume>();
 		watersurface = FindObjectOfType<WaterSurface>();
+		ppm = FindObjectOfType<PostProcessingManager>();
 
 		bool foundEffectSettings = volume.profile.TryGetSettings<PreDeathEffect>(out predeatheffect);
 		if(!foundEffectSettings)
@@ -53,9 +55,9 @@ public class ShaderControle : MonoBehaviour {
 			Debug.Log("Cant load PostProcess volume");
 			return;
 		}
-		predeatheffect.Strenght.Override((oxygen > 50) ? (oxygen - 50) / 110 : 0);
+		predeatheffect.Strenght.Override((oxygen > 20) ? (oxygen - 20) / 110 : 0);
 		// predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
-		predeatheffect.greystrenght.Override((oxygen > 300) ? (oxygen - 30) / 40 : 0);
+		predeatheffect.greystrenght.Override((oxygen > 30) ? (oxygen - 30) / 40 : 0);
 		if (oxygen > 150)
 			Debug.Log("DEADED");
 
@@ -70,7 +72,7 @@ public class ShaderControle : MonoBehaviour {
 			Debug.Log("Cant load PreDeathEffect settings");
 			return;
 		}
-		predeatheffect.noircissement.Override(depth / 300);
+		predeatheffect.noircissement.Override(depth / (ppm.maxDepth * 1.2f));
 	}
 
 	void cheapDistorsion()
