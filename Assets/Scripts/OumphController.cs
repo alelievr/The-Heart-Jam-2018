@@ -23,8 +23,8 @@ public class OumphController : MonoBehaviour {
 		{
 			torse.AddForce(new Vector2(Random.Range(-20000f * Time.deltaTime, 20000f * Time.deltaTime) , Random.Range(-20000f * Time.deltaTime, 20000f * Time.deltaTime)));
 			Input.GetAxisRaw("Vertical");
-			torse.AddForce(new Vector2((axish) ? Input.GetAxis("Horizontal") * mvtForce * Time.deltaTime : 0,
-							(axisv) ?  Input.GetAxis("Vertical") * mvtForce * Time.deltaTime : 0));
+			torse.AddForce(new Vector2((axish) ? Input.GetAxisRaw("Horizontal") * mvtForce * Time.deltaTime : 0,
+							(axisv) ?  Input.GetAxisRaw("Vertical") * mvtForce * Time.deltaTime : 0));
 			axish = (Input.GetAxisRaw("Horizontal") != 0) ? false : true;
 			axisv = (Input.GetAxisRaw("Vertical") != 0) ? false : true;
 		}
