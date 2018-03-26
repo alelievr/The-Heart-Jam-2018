@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: b103847f7c2934014b0fa9f660b169b1
-timeCreated: 1522020638
+guid: 074b9eed5c0b048458d812ad1ff3e7d7
+timeCreated: 1522033331
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: contenaire bleu (1)_0
+    21300000: GROSE BULLE_0
+    21300002: GROSE BULLE_1
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -81,13 +82,27 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: contenaire bleu (1)_0
+      name: GROSE BULLE_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 27
-        width: 138
-        height: 85
+        x: 3
+        y: 37
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: GROSE BULLE_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 2
+        width: 23
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
