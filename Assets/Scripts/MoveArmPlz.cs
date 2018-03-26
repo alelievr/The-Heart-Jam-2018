@@ -20,7 +20,7 @@ public class MoveArmPlz : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		Vector2 mousePos = Input.mousePosition - Camera.main.WorldToScreenPoint(arm.transform.position);
 
 		Vector2 mvt = new Vector2(mousePos.x / 4, mousePos.y).normalized * movePower;
