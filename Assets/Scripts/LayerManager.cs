@@ -71,7 +71,7 @@ public class LayerManager : MonoBehaviour
 
 	void ApplyLayerRandomHit(int currentLayer)
 	{
-		if (Random.value < 0.001f + 0.0001f * currentLayer)
+		if (Random.value < 0.001f + 0.0002f * currentLayer)
 		{
 			var p = postProcessingManager.ranges[0];
 
