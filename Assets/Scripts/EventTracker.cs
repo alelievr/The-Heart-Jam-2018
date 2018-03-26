@@ -20,32 +20,32 @@ public class EventTracker : MonoBehaviour
 	{
 		Debug.Log("Level start !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		// AnalyticsEvent.LevelStart(sceneName);
+		AnalyticsEvent.LevelStart(sceneName);
 	}
 
 	public void LayerUpdate(int layer)
 	{
-		// AnalyticsEvent.LevelUp(layer);
+		AnalyticsEvent.LevelUp(layer);
 	}
 
 	public void LevelFail()
 	{
 		Debug.Log("Level fail !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		// AnalyticsEvent.LevelFail(sceneName);
+		AnalyticsEvent.LevelFail(sceneName);
 	}
 	
 	public void LevelComplete()
 	{
 		Debug.Log("Level Completed !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		// AnalyticsEvent.LevelComplete(sceneName);
+		AnalyticsEvent.LevelComplete(sceneName);
 	}
 	
 	public void LevelQuit()
 	{
 		Debug.Log("Level Quit !");
 		string sceneName = SceneManager.GetActiveScene().name;
-		// AnalyticsEvent.LevelQuit(sceneName);
+		AnalyticsEvent.LevelQuit(sceneName);
 	}
 }
