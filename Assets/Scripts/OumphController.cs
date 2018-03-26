@@ -21,7 +21,7 @@ public class OumphController : MonoBehaviour {
 	void Update () {
 		if (water.playerisin)
 		{
-			torse.AddForce(new Vector2(Random.Range(-1500f, 1500f) , Random.Range(-1500f, 1500f)));
+			torse.AddForce(new Vector2(Random.Range(-200f, 200f) , Random.Range(-200f, 200f)));
 			Input.GetAxisRaw("Vertical");
 			torse.AddForce(new Vector2((axish) ? Input.GetAxis("Horizontal") * mvtForce : 0,
 							(axisv) ?  Input.GetAxis("Vertical") * mvtForce : 0));
