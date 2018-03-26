@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/scenejean.unity
+    guid: fac91712af17841fa9c799119f7cc899
+  - enabled: 1
+    path: Assets/Scenes/DownToTheAbyssFinal.unity
+    guid: bf5ff9a30b5ae4e998c60accf8315889

@@ -15,11 +15,6 @@ public class GUIManager : MonoBehaviour
 		instance = this;
 	}
 	
-	public void NextLevelButton()
-	{
-		GameManager.instance.NextLevel();
-	}
-
 	public void RetryButton()
 	{
 		GameManager.instance.Restart();
