@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class soundintro : MonoBehaviour {
 
@@ -20,6 +21,11 @@ public class soundintro : MonoBehaviour {
 
 	public void OnEnable()
 	{
+		if (step == soundbystep.Count)
+		{
+			Time.timeScale = 0;
+			SceneManager.LoadScene("DownToTheAbyssFinal");
+		}
 		if (aus == null)
 			aus = GetComponent<AudioSource>();
 		aus.PlayOneShot(soundbystep[step]);
