@@ -38,6 +38,7 @@ public class ShaderControle : MonoBehaviour {
 		oxygenchange();
 		depthchange();
 		oxygen +=  Time.deltaTime * ((watersurface.playerisin) ? speedoxygen : -speedoxygenback);
+		oxygen = (oxygen < 0) ? 0 : oxygen;
 		depth = -(container.position.y);
 		Vector3 tmp = Camera.main.WorldToScreenPoint(player.position);
 		tmp.x /= Camera.main.pixelWidth;
@@ -55,11 +56,14 @@ public class ShaderControle : MonoBehaviour {
 			Debug.Log("Cant load PostProcess volume");
 			return;
 		}
-		predeatheffect.Strenght.Override((oxygen > 20) ? (oxygen - 20) / 110 : 0);
+		predeatheffect.Strenght.Override((oxygen > 20) ? (oxygen - 20) / 200 : 0);
 		// predeatheffect.greytougoum.Override((oxygen > 50) ? (oxygen > 75) ? 0.4f : 0.2f : 0);
 		predeatheffect.greystrenght.Override((oxygen > 30) ? (oxygen - 30) / 40 : 0);
 		if (oxygen > 150)
+		{
+			GameManager.instance.Lose();
 			Debug.Log("DEADED");
+		}
 
     }
 

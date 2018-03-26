@@ -35,6 +35,7 @@ public class WaterSurface : MonoBehaviour
 	Buoyancy[]		buoyancers;
 
 	LineRenderer	lineRenderer;
+	PostProcessingManager postProcessingManager;
 	Vector3[]		positions;
 
 	RaycastHit2D[]	rightCollisions = new RaycastHit2D[2];
@@ -47,6 +48,7 @@ public class WaterSurface : MonoBehaviour
 	private void Awake()
 	{
 		buoyancers = FindObjectsOfType< Buoyancy >();
+		postProcessingManager = FindObjectOfType< PostProcessingManager >();
 		lastRotation = transform.rotation;
 	}
 
@@ -65,9 +67,17 @@ public class WaterSurface : MonoBehaviour
 		UpdateWaterHeight();
 		UpdateLineRenderer();
 		UpdateBuoyancers();
+		UpdateAirPercent();
 		meshFilter.sharedMesh.RecalculateBounds();
 		if (playerpos != null)
 			playerisin = meshFilter.sharedMesh.bounds.Contains(playerpos.position);
+	}
+
+	void UpdateAirPercent()
+	{
+		var m = postProcessingManager.maxDepth;
+
+		airPercent = 70 - (50 * (-transform.position.y / m));
 	}
 
 	void UpdateNoiseHeight()
