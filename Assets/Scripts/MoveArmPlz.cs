@@ -24,6 +24,6 @@ public class MoveArmPlz : MonoBehaviour {
 		Vector2 mousePos = Input.mousePosition - Camera.main.WorldToScreenPoint(arm.transform.position);
 
 		Vector2 mvt = new Vector2(mousePos.x / 4, mousePos.y).normalized * movePower;
-		armRigidbody.AddForce(mvt * Time.deltaTime);
+		armRigidbody.AddForce(mvt);
 	}
 }

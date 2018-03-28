@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/DownToTheAbyssFinal.unity
     guid: bf5ff9a30b5ae4e998c60accf8315889
+  - enabled: 1
+    path: Assets/Scenes/end.unity
+    guid: 11eab726f9d7e4c7ab53db9e23d0e616
